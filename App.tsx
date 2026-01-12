@@ -259,7 +259,8 @@ const App: React.FC = () => {
         // 2. Generate NEW plan
         const newPlanRaw = await generateStudyPlan(testToUpdate, classes);
         
-        const sessionsToInsert = newPlanRaw.map(item => ({
+        // Fix: Explicitly type 'item' to avoid implicit 'any' error
+        const sessionsToInsert = newPlanRaw.map((item: any) => ({
             test_id: testId,
             date: item.date,
             start_time: item.startTime,
